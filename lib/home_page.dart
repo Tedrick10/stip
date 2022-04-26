@@ -14,6 +14,7 @@ import 'package:connectivity/connectivity.dart';
 
 // Pages
 import './splash_page.dart';
+import './no_internet_page.dart';
 
 // HomePage StatelessWidget Class
 class HomePage extends StatefulWidget {
@@ -40,6 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   // Private Class Properties
   bool _isLoading = true;
+  bool _isConnectedInternet = false;
 
   // Final Class Properties
   final Connectivity _connectivity = Connectivity();
@@ -70,12 +72,19 @@ class _HomePageState extends State<HomePage> {
       print("This is the way 01");
       setState(() {
         _isLoading = true;
+        _isConnectedInternet = false;
       });
     } else if (result != ConnectivityResult.none && isStart != true) {
       print("This is the way 02");
       webView.reload();
+      setState(() {
+        _isConnectedInternet = false;
+      });
     } else {
       print("This is the way 03");
+      setState(() {
+        _isConnectedInternet = true;
+      });
     }
   }
 
@@ -353,13 +362,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return SafeArea(
-      child: Stack(
-        children: [
-          mainPage(),
-          if (_isLoading == true) SplashPage(),
-          // SplashPage()
-        ],
-      ),
+      child: (_isConnectedInternet)
+          ? Stack(
+              children: [
+                // mainPage(),
+                // if (_isLoading == true) SplashPage(),
+                SplashPage()
+              ],
+            )
+          : const NoInternetPage(),
     );
   }
 }

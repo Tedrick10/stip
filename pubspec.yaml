@@ -22,6 +22,7 @@ dependencies:
   google_fonts:
   connectivity: 
   loading_animation_widget: 
+  fullscreen:   
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2
@@ -44,8 +45,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/stip_logo.png
-    - assets/images/stip_mobile_splash_image.jpg
+    - assets/images/stip_logo_with_text.png
+    - assets/images/stip_mobile_splash_image_01.jpg
+    - assets/images/stip_mobile_splash_image_02.jpeg
     - assets/images/stip_mobile_splash_ref.jpg
+    - assets/images/mobile_splash_page.jpg
+    - assets/images/tablet_splash_page.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

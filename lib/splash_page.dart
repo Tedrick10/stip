@@ -7,50 +7,53 @@ import 'package:google_fonts/google_fonts.dart';
 
 // SplashPage StatelessWidget Class
 class SplashPage extends StatelessWidget {
+  // Final: Class Properties
+  final String _mobileSplashPageString = "assets/images/mobile_splash_page.jpg";
+  final String _tabletSplashPageString = "assets/images/tablet_splash_page.jpg";
+
   // Build Method
   @override
   Widget build(BuildContext context) {
+    // Final: Method Properties
+    final double _screenWidth = MediaQuery.of(context).size.width;
+    final double _screenHeight = MediaQuery.of(context).size.height;
+    final String _backgroundImageString = (_screenWidth > 640.0)
+        ? _tabletSplashPageString
+        : _mobileSplashPageString;
+
     // Returning Widgets
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(
-            "assets/images/stip_mobile_splash_image.jpg",
-          ),
+          image: AssetImage(_backgroundImageString),
         ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Center(
-            child: Container(
-              width: double.infinity,
-              height: 150.0,
-              alignment: Alignment.center,
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/stip_logo.png",
-                    width: 200,
-                    height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/stip_logo.png",
+                  width: 200,
+                  height: 100,
+                ),
+                Text(
+                  "Myanmar Services Trade & Investment Portal",
+                  style: GoogleFonts.lato(
+                    fontSize: 18.0,
                   ),
-                  Text(
-                    "Myanmar Services Trade & Investment Portal",
-                    style: GoogleFonts.lato(
-                      fontSize: 18.0,
-                    ),
-                  ),
-                  // const SizedBox(height: 10.0),
-                  // LoadingAnimationWidget.staggeredDotsWave(
-                  //   color: Colors.lightBlue,
-                  //   size: 50.0,
-                  // ),
-                ],
-              ),
+                ),
+                // const SizedBox(height: 10.0),
+                // LoadingAnimationWidget.staggeredDotsWave(
+                //   color: Colors.lightBlue,
+                //   size: 50.0,
+                // ),
+              ],
             ),
           ),
         ),

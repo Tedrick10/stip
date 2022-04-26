@@ -18,6 +18,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
+
     return MaterialApp(
       title: "Myanmar Services Trade & Investment Portal",
       debugShowCheckedModeBanner: false,
