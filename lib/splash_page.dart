@@ -47,8 +47,9 @@ class SplashPage extends StatelessWidget {
                 ),
                 Text(
                   _titleString.toUpperCase(),
+                  textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                   ),
                 ),
               ],
