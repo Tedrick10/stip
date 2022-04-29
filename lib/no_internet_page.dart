@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class NoInternetPage extends StatelessWidget {
   // Final: Class Properties
   final String _imageLink = "assets/images/stip_logo_with_text.png";
-  final String _text = "Please make sure to connect the internet.";
+  final String _text = "Please make sure to connect the internet";
 
   // Constructor
   const NoInternetPage({
@@ -30,8 +30,12 @@ class NoInternetPage extends StatelessWidget {
                 height: 100.0,
               ),
               Text(
-                _text,
-                style: GoogleFonts.lato(fontSize: 20.0),
+                _text.toUpperCase(),
+                style: GoogleFonts.lato(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                  // color: const Color.fromRGBO(27, 160, 220, 1.0),
+                ),
               ),
             ],
           ),

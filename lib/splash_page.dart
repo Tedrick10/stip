@@ -50,6 +50,8 @@ class SplashPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                     fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    // color: const Color.fromRGBO(27, 160, 220, 1.0),
                   ),
                 ),
               ],
