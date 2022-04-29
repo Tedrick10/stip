@@ -8,8 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 // SplashPage StatelessWidget Class
 class SplashPage extends StatelessWidget {
   // Final: Class Properties
+  final String _logoOnlyString = "assets/images/stip_logo.png";
+  final String _logoWithTitleString = "assets/images/stip_logo_with_text.png";
   final String _mobileSplashPageString = "assets/images/mobile_splash_page.jpg";
   final String _tabletSplashPageString = "assets/images/tablet_splash_page.jpg";
+  final String _titleString = "Myanmar Services Trade & Investment Portal";
 
   // Build Method
   @override
@@ -38,21 +41,16 @@ class SplashPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/stip_logo.png",
+                  _logoWithTitleString,
                   width: 200,
                   height: 100,
                 ),
                 Text(
-                  "Myanmar Services Trade & Investment Portal",
+                  _titleString.toUpperCase(),
                   style: GoogleFonts.lato(
                     fontSize: 18.0,
                   ),
                 ),
-                // const SizedBox(height: 10.0),
-                // LoadingAnimationWidget.staggeredDotsWave(
-                //   color: Colors.lightBlue,
-                //   size: 50.0,
-                // ),
               ],
             ),
           ),
