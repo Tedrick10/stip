@@ -365,9 +365,9 @@ class _HomePageState extends State<HomePage> {
       child: (_isConnectedInternet)
           ? Stack(
               children: [
-                // mainPage(),
-                // if (_isLoading == true) SplashPage(),
-                SplashPage()
+                mainPage(),
+                if (_isLoading == true) SplashPage(),
+                // SplashPage()
               ],
             )
           : const NoInternetPage(),
