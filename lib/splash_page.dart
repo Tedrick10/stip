@@ -1,3 +1,6 @@
+// Dart: Existing Libraries
+import 'dart:io';
+
 // Flutter: Existing Libraries
 import 'package:flutter/material.dart';
 
@@ -23,6 +26,8 @@ class SplashPage extends StatelessWidget {
     final String _backgroundImageString = (_screenWidth > 640.0)
         ? _tabletSplashPageString
         : _mobileSplashPageString;
+    final double _titleFontSize =
+        (_screenWidth < 640.0 && Platform.isIOS) ? 14.0 : 15.0;
 
     // Returning Widgets
     return Container(
@@ -49,7 +54,7 @@ class SplashPage extends StatelessWidget {
                   _titleString.toUpperCase(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                    fontSize: 15.0,
+                    fontSize: _titleFontSize,
                     fontWeight: FontWeight.bold,
                     // color: const Color.fromRGBO(27, 160, 220, 1.0),
                   ),
