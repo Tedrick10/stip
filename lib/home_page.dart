@@ -10,7 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:share/share.dart';
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 // Pages
 import './splash_page.dart';

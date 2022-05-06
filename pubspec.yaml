@@ -20,7 +20,7 @@ dependencies:
   share: 
   webview_flutter: 
   google_fonts:
-  connectivity: 
+  connectivity_plus:
   loading_animation_widget: 
   fullscreen:   
 
