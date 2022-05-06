@@ -1,4 +1,4 @@
-package com.services_trade.stip
+package com.servicestrade.mstip
 
 import io.flutter.embedding.android.FlutterActivity
 

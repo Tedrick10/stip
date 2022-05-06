@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.services_trade.stip">
+    package="com.servicestrade.mstip">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="MSTIP"
