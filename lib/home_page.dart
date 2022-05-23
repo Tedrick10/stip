@@ -186,7 +186,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(bottom: 30.0),
                 child: InAppWebView(
                   initialUrlRequest: URLRequest(
-                    url: Uri.parse("http://163.44.150.187"),
+                    // url: Uri.parse("http://163.44.150.187"),
+                    url: Uri.parse("https://www.servicetrade.gov.mm"),
                   ),
                   onWebViewCreated: (InAppWebViewController controller) {
                     webView = controller;
