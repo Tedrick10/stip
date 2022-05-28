@@ -59,6 +59,13 @@ class SplashPage extends StatelessWidget {
                     // color: const Color.fromRGBO(27, 160, 220, 1.0),
                   ),
                 ),
+                const SizedBox(height: 20.0),
+                Container(
+                  child: LoadingAnimationWidget.threeRotatingDots(
+                    color: const Color.fromRGBO(27, 160, 220, 1.0),
+                    size: 50,
+                  ),
+                ),
               ],
             ),
           ),
