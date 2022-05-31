@@ -14,23 +14,24 @@ import 'package:share/share.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 // Pages
-import './splash_page.dart';
-import './no_internet_page.dart';
+import '../../splash_page.dart';
+import '../../no_internet_page.dart';
 
-// HomePage StatelessWidget Class
-class HomePage extends StatefulWidget {
+// AndroidHomePage StatelessWidget Class
+class AndroidHomePage extends StatefulWidget {
   // Static Final Class Properties
-  static String routeName = "/webview";
+  static String title = "Android Home Page";
+  static String routeName = "/android-home";
 
   // Constructor
-  const HomePage({Key? key}) : super(key: key);
+  const AndroidHomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _AndroidHomePageState createState() => _AndroidHomePageState();
 }
 
-// _HomePageState State Class
-class _HomePageState extends State<HomePage> {
+// _AndroidHomePageState State Class
+class _AndroidHomePageState extends State<AndroidHomePage> {
   // Static Class Properties
   static bool isStart = true;
   // Normal Class Properties
