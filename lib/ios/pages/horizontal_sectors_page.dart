@@ -370,7 +370,7 @@ class _HorizontalSectorsPageState extends State<HorizontalSectorsPage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return Scaffold(
-      // drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(HorizontalSectorsPage.title),

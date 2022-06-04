@@ -56,6 +56,7 @@ class SplashPage extends StatelessWidget {
                   style: GoogleFonts.lato(
                     fontSize: _titleFontSize,
                     fontWeight: FontWeight.bold,
+                    color: Colors.black,
                     // color: const Color.fromRGBO(27, 160, 220, 1.0),
                   ),
                 ),

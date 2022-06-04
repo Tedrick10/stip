@@ -22,8 +22,8 @@ class IOSWelcomePage extends StatelessWidget {
     Timer(
       const Duration(seconds: 5),
       () {
-        // Navigator.of(context).pushReplacementNamed(IOSHomePage.routeName);
-        Navigator.of(context).pushReplacementNamed(MenuPage.routeName);
+        Navigator.of(context).pushReplacementNamed(IOSHomePage.routeName);
+        // Navigator.of(context).pushReplacementNamed(MenuPage.routeName);
       },
     );
 

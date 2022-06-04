@@ -369,7 +369,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return Scaffold(
-      // drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(AboutUsPage.title),

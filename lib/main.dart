@@ -5,6 +5,14 @@ import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// Flutter: External Libraries
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+// Providers
+import 'package:stip/theme_provider.dart';
+
 // Pages
 //// Android
 import 'android/pages/android_home_page.dart';
@@ -24,13 +32,42 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(MyApp());
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ],
+        child: MyApp(),
+      ),
+    );
   });
 }
 
 // App ID Prefix: FH4F75KHBD
 // MyApp StatelessWidget Class
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // Lifecycle Hook Methods
+  @override
+  void initState() {
+    // initializeTheme();
+    super.initState();
+  }
+
+  // Actions: Class Methods
+  void initializeTheme() {
+    // Final: Class Properties
+    final ThemeProvider _themeProvider = Provider.of<ThemeProvider>(context);
+
+    // Init Theme
+    _themeProvider.initTheme();
+  }
+
+  // build: Override Class Method
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(
@@ -38,28 +75,49 @@ class MyApp extends StatelessWidget {
       overlays: SystemUiOverlay.values,
     );
 
-    return MaterialApp(
-      title: "Myanmar Services Trade & Investment Portal",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      initialRoute: (Platform.isAndroid)
-          ? AndroidHomePage.routeName
-          : IOSWelcomePage.routeName,
-      routes: {
-        // Android
-        AndroidHomePage.routeName: (_) => const AndroidHomePage(),
+    // Final: Class Properties
+    final ThemeProvider _themeProvider = Provider.of<ThemeProvider>(context);
 
-        // iOS
-        IOSWelcomePage.routeName: (_) => const IOSWelcomePage(),
-        MenuPage.routeName: (_) => const MenuPage(),
-        IOSHomePage.routeName: (_) => const IOSHomePage(),
-        AboutUsPage.routeName: (_) => const AboutUsPage(),
-        WtoGatsPage.routeName: (_) => const WtoGatsPage(),
-        AseanRegionalPage.routeName: (_) => const AseanRegionalPage(),
-        HorizontalSectorsPage.routeName: (_) => const HorizontalSectorsPage(),
-        ServicesSectorsPage.routeName: (_) => const ServicesSectorsPage(),
-        LibraryPage.routeName: (_) => const LibraryPage(),
-      },
+    // Init Theme
+    _themeProvider.initTheme();
+
+    // Returning Widgets
+    return AdaptiveTheme(
+      light: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.lightBlue,
+        accentColor: Colors.lightBlue,
+      ),
+      dark: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.red,
+        accentColor: Colors.amber,
+      ),
+      initial: AdaptiveThemeMode.light,
+      builder: (theme, darkTheme) => MaterialApp(
+        title: "Myanmar Services Trade & Investment Portal",
+        debugShowCheckedModeBanner: false,
+        theme: theme,
+        darkTheme: darkTheme,
+        initialRoute: (Platform.isAndroid)
+            ? AndroidHomePage.routeName
+            : IOSWelcomePage.routeName,
+        routes: {
+          // Android
+          AndroidHomePage.routeName: (_) => const AndroidHomePage(),
+
+          // iOS
+          IOSWelcomePage.routeName: (_) => const IOSWelcomePage(),
+          MenuPage.routeName: (_) => const MenuPage(),
+          IOSHomePage.routeName: (_) => const IOSHomePage(),
+          AboutUsPage.routeName: (_) => const AboutUsPage(),
+          WtoGatsPage.routeName: (_) => const WtoGatsPage(),
+          AseanRegionalPage.routeName: (_) => const AseanRegionalPage(),
+          HorizontalSectorsPage.routeName: (_) => const HorizontalSectorsPage(),
+          ServicesSectorsPage.routeName: (_) => const ServicesSectorsPage(),
+          LibraryPage.routeName: (_) => const LibraryPage(),
+        },
+      ),
     );
   }
 }

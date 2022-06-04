@@ -369,7 +369,7 @@ class _WtoGatsPageState extends State<WtoGatsPage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return Scaffold(
-      // drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(WtoGatsPage.title),

@@ -369,7 +369,7 @@ class _LibraryPageState extends State<LibraryPage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return Scaffold(
-      // drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(LibraryPage.title),

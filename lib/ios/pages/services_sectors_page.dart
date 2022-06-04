@@ -369,7 +369,7 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return Scaffold(
-      // drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(ServicesSectorsPage.title),
