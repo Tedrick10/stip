@@ -12,6 +12,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:share/share.dart';
 // import 'package:connectivity/connectivity.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:provider/provider.dart';
+
+// Providers
+import '../../theme_provider.dart';
 
 // Pages
 import '../../splash_page.dart';
@@ -50,6 +54,7 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
 
   // Final Class Properties
   final Connectivity _connectivity = Connectivity();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Future Class Methods
   Future<void> initConnectivity() async {
@@ -143,6 +148,9 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
 
   // Widget Class Properties
   Widget mainPage() {
+    // Final: Method Properties
+    final ThemeProvider _themeProvider = Provider.of<ThemeProvider>(context);
+
     // return WillPopScope(
     //   onWillPop: _onWillPop,
     //   child:
@@ -246,9 +254,19 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                color: Colors.white,
+                // color: Colors.white,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 15.0,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                  vertical: 50.0,
+                ),
+                decoration: BoxDecoration(
+                  color: _themeProvider.getTheme
+                      ? Colors.black87
+                      : Colors.lightBlue,
+                  borderRadius: BorderRadius.circular(25.0),
                 ),
                 alignment: Alignment.bottomCenter,
                 height: 50.0,
@@ -282,7 +300,8 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
                             (Platform.isIOS)
                                 ? Icons.arrow_back_ios_outlined
                                 : Icons.arrow_back_outlined,
-                            color: const Color.fromRGBO(30, 49, 110, 1),
+                            // color: const Color.fromRGBO(30, 49, 110, 1),
+                            color: Colors.white,
                           ),
                         ),
                         const SizedBox(
@@ -312,7 +331,8 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
                             (Platform.isIOS)
                                 ? Icons.arrow_forward_ios_outlined
                                 : Icons.arrow_forward_outlined,
-                            color: const Color.fromRGBO(30, 49, 110, 1),
+                            // color: const Color.fromRGBO(30, 49, 110, 1),
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -331,6 +351,7 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
                           },
                           icon: const Icon(
                             Icons.share_outlined,
+                            color: Colors.white,
                           ),
                         ),
                         IconButton(
@@ -348,7 +369,8 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
                           },
                           icon: const Icon(
                             Icons.replay_outlined,
-                            color: Color.fromRGBO(30, 49, 110, 1),
+                            // color: Color.fromRGBO(30, 49, 110, 1),
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -367,14 +389,46 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
   // Build Method
   @override
   Widget build(BuildContext context) {
+    // Final: Method Properties
+    final ThemeProvider _themeProvider = Provider.of<ThemeProvider>(context);
+
     // Returning Widgets
     return Scaffold(
+      key: _scaffoldKey,
       drawer: const DrawerWidget(),
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(ServicesSectorsPage.title),
+        leading: InkWell(
+          onTap: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
+          borderRadius: BorderRadius.circular(50.0),
+          child: Container(
+            width: 30.0,
+            height: 30.0,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              color:
+                  _themeProvider.getTheme ? Colors.black87 : Colors.lightBlue,
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            child: const Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.lightBlue),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        // centerTitle: true,
+        // title: Text(IOSHomePage.title),
       ),
       body: SafeArea(
+        top: false,
+        bottom: false,
+        minimum: const EdgeInsets.only(top: 30.0),
         child: (_isConnectedInternet)
             ? Stack(
                 children: [
