@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: theme,
         darkTheme: darkTheme,
-        initialRoute: (!Platform.isAndroid)
+        initialRoute: (Platform.isAndroid)
             ? AndroidHomePage.routeName
             : IOSWelcomePage.routeName,
         routes: {
