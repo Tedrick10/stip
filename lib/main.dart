@@ -43,7 +43,7 @@ void main() {
   });
 }
 
-// App ID Prefix: FH4F75KHBD
+// App ID Prefix (SKU): FH4F75KHBD
 // MyApp StatelessWidget Class
 class MyApp extends StatefulWidget {
   @override
