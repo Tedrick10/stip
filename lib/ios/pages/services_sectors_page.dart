@@ -429,15 +429,16 @@ class _ServicesSectorsPageState extends State<ServicesSectorsPage> {
         top: false,
         bottom: false,
         minimum: const EdgeInsets.only(top: 30.0),
-        child: (_isConnectedInternet)
-            ? Stack(
-                children: [
-                  mainPage(),
-                  // if (_isLoading == true) SplashPage(),
-                  // SplashPage()
-                ],
-              )
-            : const NoInternetPage(),
+        child: mainPage(),
+        // child: (_isConnectedInternet)
+        //     ? Stack(
+        //         children: [
+        //           mainPage(),
+        //           // if (_isLoading == true) SplashPage(),
+        //           // SplashPage()
+        //         ],
+        //       )
+        //     : const NoInternetPage(),
       ),
     );
     ;
