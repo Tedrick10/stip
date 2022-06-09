@@ -47,6 +47,20 @@ class _IOSHomePageState extends State<IOSHomePage> {
   int scrollPosition = 0;
   double progress = 0;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
+      crossPlatform: InAppWebViewOptions(
+        useShouldOverrideUrlLoading: true,
+        mediaPlaybackRequiresUserGesture: true,
+        useOnLoadResource: true,
+        javaScriptCanOpenWindowsAutomatically: true,
+        javaScriptEnabled: true,
+      ),
+      android: AndroidInAppWebViewOptions(
+        useHybridComposition: true,
+      ),
+      ios: IOSInAppWebViewOptions(
+        allowsInlineMediaPlayback: true,
+      ));
 
   // Private Class Properties
   bool _isLoading = true;
@@ -55,6 +69,7 @@ class _IOSHomePageState extends State<IOSHomePage> {
   // Final Class Properties
   final Connectivity _connectivity = Connectivity();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey webViewKey = GlobalKey();
 
   // Future Class Methods
   Future<void> initConnectivity() async {
@@ -197,26 +212,19 @@ class _IOSHomePageState extends State<IOSHomePage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 30.0),
                 child: InAppWebView(
+                  key: webViewKey,
                   initialUrlRequest: URLRequest(
                     // url: Uri.parse("http://163.44.150.187"),
                     url: Uri.parse("https://www.servicetrade.gov.mm"),
                   ),
-                  onWebViewCreated: (InAppWebViewController controller) {
+                  initialOptions: options,
+                  onWebViewCreated: (controller) {
                     webView = controller;
-                    // ignore: unnecessary_null_comparison
-                    if (webView != null) {
-                      print("The webview is not null!");
-                    }
-                    print(
-                      "[home.page.dart: 128] => The webview is $webView.",
-                    );
                   },
-                  onLoadStart: (InAppWebViewController controller, Uri? url) {
+                  onLoadStart: (controller, url) {
                     setState(() {
                       this.url = url.toString();
-                      // this._isLoading = true;
                     });
-                    print('Loading the page started!');
                   },
                   onLoadStop:
                       (InAppWebViewController controller, Uri? url) async {
@@ -231,6 +239,20 @@ class _IOSHomePageState extends State<IOSHomePage> {
                         });
                       },
                     );
+                  },
+                  androidOnPermissionRequest:
+                      (controller, origin, resources) async {
+                    return PermissionRequestResponse(
+                        resources: resources,
+                        action: PermissionRequestResponseAction.GRANT);
+                  },
+                  onUpdateVisitedHistory: (controller, url, androidIsReload) {
+                    setState(() {
+                      this.url = url.toString();
+                    });
+                  },
+                  onConsoleMessage: (controller, consoleMessage) {
+                    print(consoleMessage);
                   },
                   onProgressChanged:
                       (InAppWebViewController controller, int progress) {

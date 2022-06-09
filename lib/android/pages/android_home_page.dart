@@ -1,7 +1,7 @@
 // Dart: Properties & Libraries
 import 'dart:io';
 import 'dart:async';
-
+import 'dart:io' show Platform;
 // Flutter: Existing Libraries
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -327,6 +327,7 @@ class _AndroidHomePageState extends State<AndroidHomePage> {
                             },
                             icon: const Icon(
                               Icons.share_outlined,
+                              color: Color.fromRGBO(30, 49, 110, 1),
                             ),
                           ),
                           IconButton(
@@ -365,7 +366,7 @@ class _AndroidHomePageState extends State<AndroidHomePage> {
   Widget build(BuildContext context) {
     // Returning Widgets
     return SafeArea(
-      child: (_isConnectedInternet)
+      child: (Platform.isIOS)
           ? Stack(
               children: [
                 mainPage(),
@@ -373,7 +374,15 @@ class _AndroidHomePageState extends State<AndroidHomePage> {
                 // SplashPage()
               ],
             )
-          : const NoInternetPage(),
+          : (_isConnectedInternet)
+              ? Stack(
+                  children: [
+                    mainPage(),
+                    if (_isLoading == true) SplashPage(),
+                    // SplashPage()
+                  ],
+                )
+              : const NoInternetPage(),
     );
   }
 }
